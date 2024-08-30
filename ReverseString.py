@@ -16,6 +16,6 @@ def reverse_string(string):
         return string
     else:
         return reverse_string(string[1:]) + string[0]
-my_string = "Alok"
+my_string = "Alok Kumar Rai"
 rev_string = reverse_string(my_string)
 print(rev_string)
