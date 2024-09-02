@@ -19,8 +19,8 @@ print(newList)
 #2nd way
 for x in numbers:
     if x == 237:
-        print(x)  
+        print(x,end=" ")  
         break  
     elif x % 2 == 0:
-        print(x)  
+        print(x,end=" ")  
 
