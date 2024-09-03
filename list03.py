@@ -30,5 +30,8 @@ mylist = [1,2,3,4]
 listComp = [x**2 for x in mylist]
 print(listComp)
 
-#
+#2nd way
+mylist = [1,2,3,4]
+for x in range(1,len(mylist)+1,1):
+    print(x**2,end=" ")
  
