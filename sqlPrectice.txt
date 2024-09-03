@@ -1,0 +1,622 @@
+Practice Sheet-1 
+Q.1 Write SQL query to create a table ‘book’ 
+Bookid      int(5)       primary key 
+Title        varchar(50) not null 
+Publisher    varchar(50) not null 
+isbn_no      varchar(10) unique 
+Price        decimal(5,2) default 0.0 
+Pdate        date         not null 
+ 
+Q.2 Write SQL query to display structure of table book  
+ 
+Q.3 Write SQL query to add a new column at the end of table with 
+following details 
+discount double(4,2) 
+ 
+Q.4 Write SQL query to change data type of isbn_no to char(10) also apply 
+NOT NULL constraint 
+ 
+Q.5 Write SQL query to insert following record in the table book 
+bookid title              publisher  isbn_no   pdate        price  
+discount  
+1      FIT Book            Ratna     13478690  01-Jul-2018  400.00  
+5.0  
+2      Physics text        TMH       28476292  22-Jan-2017  
+312.75  7.5  
+3      Accountancy Paper  Pearson   34868686  03-Aug-2005  324.28  
+12.0  
+4      All in one          Genius     92471462  01-Jan-2011  250.00  
+null  
+5      Color book          Ashirwad   36362978  31-Dec-2015  
+0.00    0.0  
+6      First Flight        TMH       32978462  05-Jun-2018  44.0    
+0.0  
+ 
+Q.6 Write SQL query to display all records of table book  
+Q.7 Write SQL query to display title, price and discount of all books  
+Q.8 Write SQL query to display distinct values of column discount from 
+table book 
+Q.9 Write SQL query to display all records of book such that title should 
+be displayed as name and pdate as publishing_date 
+Q.10 Write SQL query to display all records of table book whose price is 
+more than 300 
+Q.11 Write SQL query to display all records of table book whose price is 
+less than 380 
+Q.12 Write SQL query to display all records of table book whose title is 
+color book 
+Q.13 Write SQL query to display all records of table book whose isbn_no 
+is not equal to 13478690 
+Q.14 Write SQL query to display all records of books whose discount is 
+more than or equal to 5.0 
+Q.15 Write SQL query to display all records of books whose discount is 
+less than or equal to 10.0 
+Q.16 Write SQL query to display title, publisher and price of all books 
+whose price is null 
+Q.17 Write SQL query to display bookid, isbn_no, pdate of all books 
+whose price is not null 
+Q.18 Write SQL query to display bookid, title, price for all books whose 
+pdate is from 31-Dec-2015 to 01-Jul-2018 
+Q.19 Write SQL query to display all books whose price is not in the 
+range of 250 to 324.28 
+Q.20 Write SQL query to display all books whose publisher has letter ‘i’ 
+anywhere 
+Q.21 Write SQL query to display all books whose publisher has last 
+letter ‘k’ 
+Q.22 Write SQL query to display all books whose publisher has second 
+last letter ‘i’ 
+Q.23 Write SQL query to display title, “final price” (payable price 
+after discount) for all books whose discount is not null 
+Q.24 Write SQL query to display all books whose price is more than 250 
+and discount is not null 
+Q.25 Write SQL query to display publisher, pdate of all books whose 
+title starts with letter ‘a’ or pdate is before 01-Jan-2017 
+Q.26 Write SQL query to display title, publisher, pdate of all books 
+whose pdate is 01-Jul-2018 or 22-Jan-2017 or 31-Dec-2015 
+Q.27 Write SQL query to display bookid, title, isbn_no, pdate of all 
+books whose pdate is neither 05-Jun-2018 not 22-Jan-2017 
+Q.28 Write SQL query to display details of all books in the ascending 
+order of their title 
+Q.29 Write SQL query to display details of all books in the descending 
+order of their price 
+Q.30 Write SQL query to increase price of every book by 10% whose price 
+is less than 300 
+
+===============================================================================
+mysql> show databases ;
++---------------------------+
+| Database                  |
++---------------------------+
+| apnacollege               |
+| cloud_vendor              |
+| companydb                 |
+| data                      |
+| db                        |
+| db1                       |
+| db2                       |
+| employeedb                |
+| fastapi_crud              |
+| fastapi_todo_db           |
+| formdb                    |
+| information_schema        |
+| jdbcdb                    |
+| kfcdb                     |
+| learn_sql                 |
+| learnmysql                |
+| library                   |
+| librarydb                 |
+| mappingdb1                |
+| masaidb                   |
+| mydatabase                |
+| mydb                      |
+| mynewdb                   |
+| mysql                     |
+| newdb                     |
+| nurady                    |
+| org                       |
+| oyodb                     |
+| performance_schema        |
+| prectice                  |
+| sb201_db_day6             |
+| sb201c2db                 |
+| sb201db                   |
+| sb_101_block_23           |
+| sb_101_block_24           |
+| shop                      |
+| shopkaro                  |
+| sqljoins                  |
+| student_management_system |
+| swiggydb                  |
+| swipe                     |
+| sys                       |
+| test                      |
+| testmydb                  |
+| wifidb                    |
++---------------------------+
+45 rows in set (0.00 sec)
+
+mysql> use nurady ;
+Database changed
+mysql> create table book (
+    -> bookid int(5) primary key,
+    -> title varchar(50) notNull,
+    -> publisher varchar(50) not null,
+    -> isbn_no varchar(10) unique,
+    -> price decimal(5,2) default 0.0,
+    -> pdate date not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notNull,
+publisher varchar(50) not null,
+isbn_no varchar(10) unique,
+price decim' at line 3
+mysql> create table book (
+    ->    bookid int(5) primary key,
+    ->     title varchar(50) not Null,
+    ->      publisher varchar(50) not null,
+    ->     isbn_no varchar(10) unique,
+    ->     price decimal(5,2) default 0.0,
+    ->     pdate date not null);
+Query OK, 0 rows affected, 1 warning (0.12 sec)
+
+mysql> desc book ;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| bookid    | int          | NO   | PRI | NULL    |       |
+| title     | varchar(50)  | NO   |     | NULL    |       |
+| publisher | varchar(50)  | NO   |     | NULL    |       |
+| isbn_no   | varchar(10)  | YES  | UNI | NULL    |       |
+| price     | decimal(5,2) | YES  |     | 0.00    |       |
+| pdate     | date         | NO   |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
+mysql> alter table book add colum (discount double(4,2));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(discount double(4,2))' at line 1
+mysql> alter table book add (discount double(4,2));
+Query OK, 0 rows affected, 1 warning (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> desc table ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> desc book ;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| bookid    | int          | NO   | PRI | NULL    |       |
+| title     | varchar(50)  | NO   |     | NULL    |       |
+| publisher | varchar(50)  | NO   |     | NULL    |       |
+| isbn_no   | varchar(10)  | YES  | UNI | NULL    |       |
+| price     | decimal(5,2) | YES  |     | 0.00    |       |
+| pdate     | date         | NO   |     | NULL    |       |
+| discount  | double(4,2)  | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> alter table book isbn_no char(10) not null ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'isbn_no char(10) not null' at line 1
+mysql> alter table book alter column isbn_no char(10) not null ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'char(10) not null' at line 1
+mysql> alter table book alter column isbn_no char(10) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'char(10)' at line 1
+mysql> ALTER TABLE book ALTER COLUMN isbn_no TYPE CHAR(50) not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TYPE CHAR(50) not null' at line 1
+mysql> ALTER TABLE book ALTER COLUMN isbn_no TYPE CHAR(50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TYPE CHAR(50)' at line 1
+mysql> ALTER TABLE book Modify isbn_no CHAR(50) not null;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc book ;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| bookid    | int          | NO   | PRI | NULL    |       |
+| title     | varchar(50)  | NO   |     | NULL    |       |
+| publisher | varchar(50)  | NO   |     | NULL    |       |
+| isbn_no   | char(50)     | NO   | UNI | NULL    |       |
+| price     | decimal(5,2) | YES  |     | 0.00    |       |
+| pdate     | date         | NO   |     | NULL    |       |
+| discount  | double(4,2)  | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql>  INSERT INTO book (bookid, title, publisher, isbn_no, pdate, price, discount)
+    ->  VALUES
+    ->          (1, 'FIT Book', 'Ratna', '13478690', '2018-07-01', 400.00, 5.0),
+    ->          (2, 'Physics text', 'TMH', '28476292', '2017-01-22', 312.75, 7.5),
+    ->          (3, 'Accountancy Paper', 'Pearson', '34868686', '2005-08-03', 324.28, 12.0),
+    ->          (4, 'All in one', 'Genius', '92471462', '2011-01-01', 250.00, NULL),
+    ->          (5, 'Color book', 'Ashirwad', '36362978', '2015-12-31', 0.00, 0.0),
+    ->          (6, 'First Flight', 'TMH', '32978462', '2018-06-05', 44.0, 0.0);
+Query OK, 6 rows affected (0.02 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql>  select * from book ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+6 rows in set (0.01 sec)
+
+mysql> select title , price , discount from book ;
++-------------------+--------+----------+
+| title             | price  | discount |
++-------------------+--------+----------+
+| FIT Book          | 400.00 |     5.00 |
+| Physics text      | 312.75 |     7.50 |
+| Accountancy Paper | 324.28 |    12.00 |
+| All in one        | 250.00 |     NULL |
+| Color book        |   0.00 |     0.00 |
+| First Flight      |  44.00 |     0.00 |
++-------------------+--------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select distinct(discount) from book ;
++----------+
+| discount |
++----------+
+|     5.00 |
+|     7.50 |
+|    12.00 |
+|     NULL |
+|     0.00 |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> selet * from book where alias title as name ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selet * from book where alias title as name' at line 1
+mysql> select title as name and pdate as publisingdate from book ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and pdate as publisingdate from book' at line 1
+mysql> select "title" as "name" & "pdate" as "publisingdate" from book ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '& "pdate" as "publisingdate" from book' at line 1
+mysql> select "title" as "name" and "pdate" as "publisingdate" from book ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and "pdate" as "publisingdate" from book' at line 1
+mysql> select * from book ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select bookid , title as name , publisher , isbn_no , pdate as publisher_date ,discount from book ;
++--------+-------------------+-----------+----------+----------------+----------+
+| bookid | name              | publisher | isbn_no  | publisher_date | discount |
++--------+-------------------+-----------+----------+----------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 2018-07-01     |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 2017-01-22     |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 2005-08-03     |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 2011-01-01     |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 | 2015-12-31     |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 | 2018-06-05     |     0.00 |
++--------+-------------------+-----------+----------+----------------+----------+
+6 rows in set (0.01 sec)
+
+mysql> --Write SQL query to display all records of table book whose price is
+    -> more than 300
+    -> select * from book ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--Write SQL query to display all records of table book whose price is
+more than' at line 1
+mysql> --Write SQL query to display all records of table book whose price is more than 300 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--Write SQL query to display all records of table book whose price is more than ' at line 1
+mysql> --Write SQL query to display all records of table book whose price is more than 300 --
+    -> select * from book ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--Write SQL query to display all records of table book whose price is more than ' at line 1
+mysql> select * from book where (price > 300) ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from book where (price < 380) ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from book where (title = "color book");
++--------+------------+-----------+----------+-------+------------+----------+
+| bookid | title      | publisher | isbn_no  | price | pdate      | discount |
++--------+------------+-----------+----------+-------+------------+----------+
+|      5 | Color book | Ashirwad  | 36362978 |  0.00 | 2015-12-31 |     0.00 |
++--------+------------+-----------+----------+-------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> slect * from book where (isbn_no != 13478690);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slect * from book where (isbn_no != 13478690)' at line 1
+mysql> select * from book where (isbn_no != 13478690);
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from book where (discount >= 5.0) ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from book where (discount <= 10.0) ;
++--------+--------------+-----------+----------+--------+------------+----------+
+| bookid | title        | publisher | isbn_no  | price  | pdate      | discount |
++--------+--------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book     | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      5 | Color book   | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+--------------+-----------+----------+--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select title , publisher , price where price = null ;
+ERROR 1054 (42S22): Unknown column 'title' in 'field list'
+mysql> select title , publisher , price from book where price = null ;
+Empty set (0.00 sec)
+
+mysql> select title , publisher , price from book where (price = null) ;
+Empty set (0.00 sec)
+
+mysql> select title , publisher , price from book where (price = 0.0) ;
++------------+-----------+-------+
+| title      | publisher | price |
++------------+-----------+-------+
+| Color book | Ashirwad  |  0.00 |
++------------+-----------+-------+
+1 row in set (0.00 sec)
+
+mysql> select  bookid, isbn_no, pdate from book where (price != null) ;
+Empty set (0.00 sec)
+
+mysql> select  bookid, isbn_no, pdate from book where (price != 400) ;
++--------+----------+------------+
+| bookid | isbn_no  | pdate      |
++--------+----------+------------+
+|      2 | 28476292 | 2017-01-22 |
+|      3 | 34868686 | 2005-08-03 |
+|      4 | 92471462 | 2011-01-01 |
+|      5 | 36362978 | 2015-12-31 |
+|      6 | 32978462 | 2018-06-05 |
++--------+----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select bookid, title, price from book where pdate is between "2015-12-31" to "2018-07-01" ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between "2015-12-31" to "2018-07-01"' at line 1
+mysql> select bookid, title, price from book where pdate between "2015-12-31" to "2018-07-01" ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to "2018-07-01"' at line 1
+mysql> select bookid, title, price from book where pdate between from "2015-12-31" to "2018-07-01" ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from "2015-12-31" to "2018-07-01"' at line 1
+mysql> select bookid, title, price from book where pdate between "2015-12-31" and "2018-07-01" ;
++--------+--------------+--------+
+| bookid | title        | price  |
++--------+--------------+--------+
+|      1 | FIT Book     | 400.00 |
+|      2 | Physics text | 312.75 |
+|      5 | Color book   |   0.00 |
+|      6 | First Flight |  44.00 |
++--------+--------------+--------+
+4 rows in set (0.01 sec)
+
+mysql> select * from book where price is not between 250 and 324.28 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between 250 and 324.28' at line 1
+mysql> select * from book where price is not between "250" and "324.28" ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between "250" and "324.28"' at line 1
+mysql> select * from book where price not between "250" and "324.28" ;
++--------+--------------+-----------+----------+--------+------------+----------+
+| bookid | title        | publisher | isbn_no  | price  | pdate      | discount |
++--------+--------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book     | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      5 | Color book   | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+--------------+-----------+----------+--------+------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from book where publisher like "%i%" ;
++--------+------------+-----------+----------+--------+------------+----------+
+| bookid | title      | publisher | isbn_no  | price  | pdate      | discount |
++--------+------------+-----------+----------+--------+------------+----------+
+|      4 | All in one | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      5 | Color book | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
++--------+------------+-----------+----------+--------+------------+----------+
+2 rows in set (0.01 sec)
+
+mysql> select * from book where publisher like "%k" ;
+Empty set (0.00 sec)
+
+mysql> select * from book ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from book where publisher like "%h" ;
++--------+--------------+-----------+----------+--------+------------+----------+
+| bookid | title        | publisher | isbn_no  | price  | pdate      | discount |
++--------+--------------+-----------+----------+--------+------------+----------+
+|      2 | Physics text | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      6 | First Flight | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+--------------+-----------+----------+--------+------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from book where publisher like "_i" ;
+Empty set (0.00 sec)
+
+mysql> select * from book where publisher like "_m" ;
+Empty set (0.01 sec)
+
+mysql> select * from book where publisher like "_a" ;
+Empty set (0.00 sec)
+
+mysql> select * from book where publisher like "_a%" ;
++--------+----------+-----------+----------+--------+------------+----------+
+| bookid | title    | publisher | isbn_no  | price  | pdate      | discount |
++--------+----------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
++--------+----------+-----------+----------+--------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select title , price - (price * discount / 100) as final_Price from book where discount is not null ;
++-------------------+-------------+
+| title             | final_Price |
++-------------------+-------------+
+| FIT Book          |  380.000000 |
+| Physics text      |  289.293750 |
+| Accountancy Paper |  285.366400 |
+| Color book        |    0.000000 |
+| First Flight      |   44.000000 |
++-------------------+-------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from book ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from book  where (price > 250) and (discount != null);
+Empty set (0.00 sec)
+
+mysql> select * from book  where (price > 250) or (discount != null);
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select publisher , pdate from book where title like "a%" or pdate< "2017-01-01" ;
++-----------+------------+
+| publisher | pdate      |
++-----------+------------+
+| Pearson   | 2005-08-03 |
+| Genius    | 2011-01-01 |
+| Ashirwad  | 2015-12-31 |
++-----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select title, publisher, pdate from book where (pdate = "2018-07-01") or (pdate = "2017-01-22") or (2015-12-31) ;
++-------------------+-----------+------------+
+| title             | publisher | pdate      |
++-------------------+-----------+------------+
+| FIT Book          | Ratna     | 2018-07-01 |
+| Physics text      | TMH       | 2017-01-22 |
+| Accountancy Paper | Pearson   | 2005-08-03 |
+| All in one        | Genius    | 2011-01-01 |
+| Color book        | Ashirwad  | 2015-12-31 |
+| First Flight      | TMH       | 2018-06-05 |
++-------------------+-----------+------------+
+6 rows in set (0.01 sec)
+
+mysql> select  bookid, title, isbn_no, pdate from book where pdate not in ("2018-06-05",
+    -> "201-01-22") ;
++--------+-------------------+----------+------------+
+| bookid | title             | isbn_no  | pdate      |
++--------+-------------------+----------+------------+
+|      1 | FIT Book          | 13478690 | 2018-07-01 |
+|      2 | Physics text      | 28476292 | 2017-01-22 |
+|      3 | Accountancy Paper | 34868686 | 2005-08-03 |
+|      4 | All in one        | 92471462 | 2011-01-01 |
+|      5 | Color book        | 36362978 | 2015-12-31 |
++--------+-------------------+----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from book where title in asc ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc' at line 1
+mysql> select * from book order by title in asc ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc' at line 1
+mysql> select * from book where  title  order by in asc ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in asc' at line 1
+mysql> select * from book where order by title in asc ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by title in asc' at line 1
+mysql> select * from book order by title asc ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from book order by title desc ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      6 | First Flight      | TMH       | 32978462 |  44.00 | 2018-06-05 |     0.00 |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      4 | All in one        | Genius    | 92471462 | 250.00 | 2011-01-01 |     NULL |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> Update book set price = (price + (price*10%)) where price < 300 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')) where price < 300' at line 1
+mysql> Update book set price = (price*110%)) where price < 300 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')) where price < 300' at line 1
+mysql> Update book set price = (price*1.10) where price < 300 ;
+Query OK, 2 rows affected (0.02 sec)
+Rows matched: 3  Changed: 2  Warnings: 0
+
+mysql> select * from book ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 275.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  48.40 | 2018-06-05 |     0.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql>
