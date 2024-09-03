@@ -34,4 +34,3 @@ print(listComp)
 mylist = [1,2,3,4]
 for x in range(1,len(mylist)+1,1):
     print(x**2,end=" ")
- 
