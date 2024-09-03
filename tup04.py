@@ -62,6 +62,14 @@ my_tuple = (10, 20, 30)
 reversed_tuple = tuple(reversed(my_tuple))
 print(reversed_tuple)  # (30, 20, 10)
 
+#(Unpacking)
+my_tuple = (10, 20, 30)
+a, b, c = my_tuple
+print(a)  # 10
+print(b)  # 20
+print(c)  
+
+
 
 
 
