@@ -1,0 +1,337 @@
+Questions on Subquery) 
+Questions on GROUP BY, HAVING clause 
+Q.1 Write a query to find total number of distinct department in the 
+table employee 
+Q.2 Write a query to display Maximum Salary among all employee as 
+“MAX_SAL”, Minimum Salary among all employee as “MIN_SAL”, Total Salary 
+of all employees employee as “TOTAL_SAL” 
+Q.3 Write a query to find sum of salaries gender wise 
+Q.4 Write a query to find employee’s count gender wise such that you need 
+to count only those employee whose d_o_j is after ‘2008-01-01’. 
+Q.5 Write a query to find maximum salaries department wise such that 
+display salary of only those departments whose average salary is more 
+than 22500. 
+Q.6 Write a query to find minimum salary department wise for all 
+employees department wise such that employee name must contain letter ‘a’ 
+anywhere; and maximum salary of the department must be more than 23000, 
+display the results in the descending order of minimum salaries. 
+Say we have added one more entry in the table with the following details 
+e_id: 7 name: Suhani gender: female salary: null department: finance 
+d_o_j: 2013-05-02 
+Q.7 What will be the output of following queries 
+(a) SELECT COUNT(*), COUNT(salary) FROM employee; 
+(b) SELECT AVG(salary) FROM employee; 
+Q.8 Spot the error in the following queries (If any). Write “no error” in 
+case the query is correct 
+(a) SELECT department, MAX(salary) FROM employee GROUP BY gender 
+(b) SELECT department, SUM(salary) FROM employee GROUP BY (department, 
+gender) 
+(c) SELECT AVG(salary) FROM employee WHERE salary = NULL GROUP BY gender; 
+(d) SELECT department as dept, AVG(salary) FROM employee GROUP BY dept 
+HAVING MAX(sal) < 40000; 
+(e) SELECT gender, MAX(salary) AS “MAX_SAL” FROM employee GROUP BY gender 
+ORDER BY MAX_SAL DESC 
+(f) SELECT gender, MIN(salary) AS “MIN_SAL” FROM employee HAVING gender = 
+“male”; 
+(g) SELECT gender, MIN(salary) AS “MIN_SAL” FROM employee GROUP BY gender 
+HAVING gender = “male”; 
+(h) SELECT gender, MIN(salary) AS “MIN_SAL” FROM employee GROUP BY gender 
+HAVING SUM(salary) >= 74000; 
+(i) SELECT gender, MIN(salary) AS “MIN_SAL” FROM employee GROUP BY gender 
+HAVING email LIKE “%@hw.com”; 
+(j) SELECT department, AVG(salary) AS “MIN_SAL” FROM employee ORDER BY 
+MIN_SAL HAVING gender = “male” WHERE gender = ‘male’;
+########################################################################
+mysql> show tables ;
+Empty set (0.01 sec)
+
+mysql> create table employee (
+    -> e_id int(5) primary key,
+    -> name varchar(50) not null,
+    -> gender varchar(10) not null,
+    -> salary int(10) not null default(0.00),
+    -> department varchar(20) not null,
+    -> d_o_j date not null );
+Query OK, 0 rows affected, 2 warnings (0.01 sec)
+
+mysql> desc employee ;
++------------+-------------+------+-----+---------+-------------------+
+| Field      | Type        | Null | Key | Default | Extra             |
++------------+-------------+------+-----+---------+-------------------+
+| e_id       | int         | NO   | PRI | NULL    |                   |
+| name       | varchar(50) | NO   |     | NULL    |                   |
+| gender     | varchar(10) | NO   |     | NULL    |                   |
+| salary     | int         | NO   |     | 0.00    | DEFAULT_GENERATED |
+| department | varchar(20) | NO   |     | NULL    |                   |
+| d_o_j      | date        | NO   |     | NULL    |                   |
++------------+-------------+------+-----+---------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into (e_id,name,gender,salary,department,d_o_j) values
+    -> (1,Surbhi,female,15000,finance,2008-05-31);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(e_id,name,gender,salary,department,d_o_j) values
+(1,Surbhi,female,15000,finance' at line 1
+mysql>  insert into employee(e_id,name,gender,salary,department,d_o_j) values
+    ->     (1,Surbhi,female,15000,finance,2008-05-31);
+ERROR 1054 (42S22): Unknown column 'Surbhi' in 'field list'
+mysql> INSERT INTO employees (e_id, name, gender, salary, department, d_o_j) VALUES
+    -> (1, 'Surbhi', 'female', 15000, 'finance', '2008-05-31'),
+    -> (2, 'Ajay', 'male', 27500, 'finance', '2010-04-25'),
+    -> (3, 'Dheeraj', 'male', 45000, 'development', '2014-06-21'),
+    -> (4, 'Shefali', 'female', 22000, 'testing', '2005-01-01'),
+    -> (5, 'Sonali', 'female', 37000, 'marketing', '2007-08-26'),
+    -> (6, 'Jayesh', 'male', 26000, 'development', '2009-01-25');
+ERROR 1146 (42S02): Table 'nurady.employees' doesn't exist
+mysql> INSERT INTO employee (e_id, name, gender, salary, department, d_o_j) VALUES
+    -> (1, 'Surbhi', 'female', 15000, 'finance', '2008-05-31'),
+    -> (2, 'Ajay', 'male', 27500, 'finance', '2010-04-25'),
+    -> (3, 'Dheeraj', 'male', 45000, 'development', '2014-06-21'),
+    -> (4, 'Shefali', 'female', 22000, 'testing', '2005-01-01'),
+    -> (5, 'Sonali', 'female', 37000, 'marketing', '2007-08-26'),
+    -> (6, 'Jayesh', 'male', 26000, 'development', '2009-01-25');
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee ;
++------+---------+--------+--------+-------------+------------+
+| e_id | name    | gender | salary | department  | d_o_j      |
++------+---------+--------+--------+-------------+------------+
+|    1 | Surbhi  | female |  15000 | finance     | 2008-05-31 |
+|    2 | Ajay    | male   |  27500 | finance     | 2010-04-25 |
+|    3 | Dheeraj | male   |  45000 | development | 2014-06-21 |
+|    4 | Shefali | female |  22000 | testing     | 2005-01-01 |
+|    5 | Sonali  | female |  37000 | marketing   | 2007-08-26 |
+|    6 | Jayesh  | male   |  26000 | development | 2009-01-25 |
++------+---------+--------+--------+-------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select count(distinct(department)) from employee ;
++-----------------------------+
+| count(distinct(department)) |
++-----------------------------+
+|                           4 |
++-----------------------------+
+1 row in set (0.01 sec)
+
+mysql> select max(salary) from employee ;
++-------------+
+| max(salary) |
++-------------+
+|       45000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select min(salary) from employee ;
++-------------+
+| min(salary) |
++-------------+
+|       15000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee ;
++------+---------+--------+--------+-------------+------------+
+| e_id | name    | gender | salary | department  | d_o_j      |
++------+---------+--------+--------+-------------+------------+
+|    1 | Surbhi  | female |  15000 | finance     | 2008-05-31 |
+|    2 | Ajay    | male   |  27500 | finance     | 2010-04-25 |
+|    3 | Dheeraj | male   |  45000 | development | 2014-06-21 |
+|    4 | Shefali | female |  22000 | testing     | 2005-01-01 |
+|    5 | Sonali  | female |  37000 | marketing   | 2007-08-26 |
+|    6 | Jayesh  | male   |  26000 | development | 2009-01-25 |
++------+---------+--------+--------+-------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select name , department from employee where max(salary) ;
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select name , department from  employee where (select max(salary) from employee);
++---------+-------------+
+| name    | department  |
++---------+-------------+
+| Surbhi  | finance     |
+| Ajay    | finance     |
+| Dheeraj | development |
+| Shefali | testing     |
+| Sonali  | marketing   |
+| Jayesh  | development |
++---------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select name , department , salary from  employee where (select max(salary) from employee);
++---------+-------------+--------+
+| name    | department  | salary |
++---------+-------------+--------+
+| Surbhi  | finance     |  15000 |
+| Ajay    | finance     |  27500 |
+| Dheeraj | development |  45000 |
+| Shefali | testing     |  22000 |
+| Sonali  | marketing   |  37000 |
+| Jayesh  | development |  26000 |
++---------+-------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select max(salary) as MAX_SAL , min(salary) as MIN_SAL , sum(salary) as Total_salary from employee ;
++---------+---------+--------------+
+| MAX_SAL | MIN_SAL | Total_salary |
++---------+---------+--------------+
+|   45000 |   15000 |       172500 |
++---------+---------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from empoyee ;
+ERROR 1146 (42S02): Table 'nurady.empoyee' doesn't exist
+mysql> select * from employee ;
++------+---------+--------+--------+-------------+------------+
+| e_id | name    | gender | salary | department  | d_o_j      |
++------+---------+--------+--------+-------------+------------+
+|    1 | Surbhi  | female |  15000 | finance     | 2008-05-31 |
+|    2 | Ajay    | male   |  27500 | finance     | 2010-04-25 |
+|    3 | Dheeraj | male   |  45000 | development | 2014-06-21 |
+|    4 | Shefali | female |  22000 | testing     | 2005-01-01 |
+|    5 | Sonali  | female |  37000 | marketing   | 2007-08-26 |
+|    6 | Jayesh  | male   |  26000 | development | 2009-01-25 |
++------+---------+--------+--------+-------------+------------+
+6 rows in set (0.01 sec)
+
+mysql> select sum(salary) as Male_salary from Employee Where  Gender = "male";
++-------------+
+| Male_salary |
++-------------+
+|       98500 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(salary) as Male_salary from Employee Where  Gender = "female";
++-------------+
+| Male_salary |
++-------------+
+|       74000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(salary) as FEMale_salary from Employee Where  Gender = "female";
++---------------+
+| FEMale_salary |
++---------------+
+|         74000 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(salary) from Empoyee where salary group by gender ;
+ERROR 1146 (42S02): Table 'nurady.empoyee' doesn't exist
+mysql> select sum(salary) from Empoyee  salary group by gender ;
+ERROR 1146 (42S02): Table 'nurady.empoyee' doesn't exist
+mysql> select sum(salary) from Employee  salary group by gender ;
++-------------+
+| sum(salary) |
++-------------+
+|       74000 |
+|       98500 |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> select count(employee) group by gender where d_o_j > 2008-01-01 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where d_o_j > 2008-01-01' at line 1
+mysql> select count(employee) group by gender where d_o_j > "2008-01-01" ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where d_o_j > "2008-01-01"' at line 1
+mysql> select count(employee) from employee group by gender where d_o_j > "2008-01-01" ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where d_o_j > "2008-01-01"' at line 1
+mysql> select count(employee) from employee group by gender where (d_o_j > "2008-01-01") ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where (d_o_j > "2008-01-01")' at line 1
+mysql> select count(gender) from employee where (d_o_j > "2008-01-01") group by gender ;
++---------------+
+| count(gender) |
++---------------+
+|             1 |
+|             3 |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> select gender , count(*) as employee_count from employees where d_o_j > "2008-01-01" group by gender ;
+ERROR 1146 (42S02): Table 'nurady.employees' doesn't exist
+mysql> select gender , count(*) as employee_count from employee where d_o_j > "2008-01-01" group by gender ;
++--------+----------------+
+| gender | employee_count |
++--------+----------------+
+| female |              1 |
+| male   |              3 |
++--------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select max(salary) from employee group by department ;
++-------------+
+| max(salary) |
++-------------+
+|       27500 |
+|       45000 |
+|       22000 |
+|       37000 |
++-------------+
+4 rows in set (0.01 sec)
+
+mysql> select department , max(salary) from employee group by department ;
++-------------+-------------+
+| department  | max(salary) |
++-------------+-------------+
+| finance     |       27500 |
+| development |       45000 |
+| testing     |       22000 |
+| marketing   |       37000 |
++-------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee ;
++------+---------+--------+--------+-------------+------------+
+| e_id | name    | gender | salary | department  | d_o_j      |
++------+---------+--------+--------+-------------+------------+
+|    1 | Surbhi  | female |  15000 | finance     | 2008-05-31 |
+|    2 | Ajay    | male   |  27500 | finance     | 2010-04-25 |
+|    3 | Dheeraj | male   |  45000 | development | 2014-06-21 |
+|    4 | Shefali | female |  22000 | testing     | 2005-01-01 |
+|    5 | Sonali  | female |  37000 | marketing   | 2007-08-26 |
+|    6 | Jayesh  | male   |  26000 | development | 2009-01-25 |
++------+---------+--------+--------+-------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select name , department , max(salary) from employee group by department ;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'nurady.employee.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select department , max(salary) from employee group by department ;
++-------------+-------------+
+| department  | max(salary) |
++-------------+-------------+
+| finance     |       27500 |
+| development |       45000 |
+| testing     |       22000 |
+| marketing   |       37000 |
++-------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select department , max(salary) from employee where avg(salary) >22500 group by department ;
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select department , max(salary) from employee where avg(salary) >22500  ;
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select department , max(salary) from employee group by department ;
++-------------+-------------+
+| department  | max(salary) |
++-------------+-------------+
+| finance     |       27500 |
+| development |       45000 |
+| testing     |       22000 |
+| marketing   |       37000 |
++-------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select department , max(salary) from employee group by department where avg(salary) >22500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where avg(salary) >22500' at line 1
+mysql> select department , max(salary) as max(salary) from employee where department in (select department from employee group by dep
+artment having avg(salary) > 22500 ) group by department ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'max(salary) from employee where department in (select department from employee g' at line 1
+mysql> select department , max(salary) as max_salary from employee where department in (select department from employee group by depa
+rtment having avg(salary) > 22500 ) group by department ;
++-------------+------------+
+| department  | max_salary |
++-------------+------------+
+| development |      45000 |
+| marketing   |      37000 |
++-------------+------------+
+2 rows in set (0.00 sec)
