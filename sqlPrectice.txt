@@ -80,6 +80,8 @@ Q.29 Write SQL query to display details of all books in the descending
 order of their price 
 Q.30 Write SQL query to increase price of every book by 10% whose price 
 is less than 300 
+Q.32 Write SQL query to drop column isbn_no from table book 
+Q.33 Write SQL query to drop table book 
 
 ===============================================================================
 mysql> show databases ;
@@ -619,4 +621,135 @@ mysql> select * from book ;
 +--------+-------------------+-----------+----------+--------+------------+----------+
 6 rows in set (0.00 sec)
 
-mysql>
+mysql> show databases ;
++---------------------------+
+| Database                  |
++---------------------------+
+| apnacollege               |
+| cloud_vendor              |
+| companydb                 |
+| data                      |
+| db                        |
+| db1                       |
+| db2                       |
+| employeedb                |
+| fastapi_crud              |
+| fastapi_todo_db           |
+| formdb                    |
+| information_schema        |
+| jdbcdb                    |
+| kfcdb                     |
+| learn_sql                 |
+| learnmysql                |
+| library                   |
+| librarydb                 |
+| mappingdb1                |
+| masaidb                   |
+| mydatabase                |
+| mydb                      |
+| mynewdb                   |
+| mysql                     |
+| newdb                     |
+| nurady                    |
+| org                       |
+| oyodb                     |
+| performance_schema        |
+| prectice                  |
+| sb201_db_day6             |
+| sb201c2db                 |
+| sb201db                   |
+| sb_101_block_23           |
+| sb_101_block_24           |
+| shop                      |
+| shopkaro                  |
+| sqljoins                  |
+| student_management_system |
+| swiggydb                  |
+| swipe                     |
+| sys                       |
+| test                      |
+| testmydb                  |
+| wifidb                    |
++---------------------------+
+45 rows in set (0.02 sec)
+
+mysql> use nurady ;
+Database changed
+mysql> show tables ;
++------------------+
+| Tables_in_nurady |
++------------------+
+| book             |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> desc book ;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| bookid    | int          | NO   | PRI | NULL    |       |
+| title     | varchar(50)  | NO   |     | NULL    |       |
+| publisher | varchar(50)  | NO   |     | NULL    |       |
+| isbn_no   | char(50)     | NO   | UNI | NULL    |       |
+| price     | decimal(5,2) | YES  |     | 0.00    |       |
+| pdate     | date         | NO   |     | NULL    |       |
+| discount  | double(4,2)  | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select * from book ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
+|      4 | All in one        | Genius    | 92471462 | 275.00 | 2011-01-01 |     NULL |
+|      5 | Color book        | Ashirwad  | 36362978 |   0.00 | 2015-12-31 |     0.00 |
+|      6 | First Flight      | TMH       | 32978462 |  48.40 | 2018-06-05 |     0.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+6 rows in set (0.01 sec)
+
+mysql> delete * from book where price between (0 and 300);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from book where price between (0 and 300)' at line 1
+mysql> delete from book where price is between (0 and 300);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between (0 and 300)' at line 1
+mysql> delete from book where price is between (0 and 300);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between (0 and 300)' at line 1
+mysql> delete from book where price between (0 and 300);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> delete from book where price between 0 and 300;
+Query OK, 3 rows affected (0.02 sec)
+
+mysql> select * from book ;
++--------+-------------------+-----------+----------+--------+------------+----------+
+| bookid | title             | publisher | isbn_no  | price  | pdate      | discount |
++--------+-------------------+-----------+----------+--------+------------+----------+
+|      1 | FIT Book          | Ratna     | 13478690 | 400.00 | 2018-07-01 |     5.00 |
+|      2 | Physics text      | TMH       | 28476292 | 312.75 | 2017-01-22 |     7.50 |
+|      3 | Accountancy Paper | Pearson   | 34868686 | 324.28 | 2005-08-03 |    12.00 |
++--------+-------------------+-----------+----------+--------+------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> alter table book drop column isbn_no;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc book ;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| bookid    | int          | NO   | PRI | NULL    |       |
+| title     | varchar(50)  | NO   |     | NULL    |       |
+| publisher | varchar(50)  | NO   |     | NULL    |       |
+| price     | decimal(5,2) | YES  |     | 0.00    |       |
+| pdate     | date         | NO   |     | NULL    |       |
+| discount  | double(4,2)  | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> drop table book ;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
