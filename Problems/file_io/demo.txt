@@ -1,2 +1,1 @@
-I am learning Python
-from myself
+I hope all clear
