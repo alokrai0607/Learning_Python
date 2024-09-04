@@ -335,3 +335,15 @@ rtment having avg(salary) > 22500 ) group by department ;
 | marketing   |      37000 |
 +-------------+------------+
 2 rows in set (0.00 sec)
+---
+mysql> SELECT department, MIN(salary) AS min_salary FROM employee WHERE name LIKE '%a%'AND department IN (SELECT department FROM employee GROUP BY department HAVING MAX(salary) > 23000) GROUP BY department ORDER BY min_salary DES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DES' at line 1
+mysql> SELECT department, MIN(salary) AS min_salary FROM employee WHERE name LIKE '%a%'AND department IN (SELECT department FROM employee GROUP BY department HAVING MAX(salary) > 23000) GROUP BY department ORDER BY min_salary DESC;
++-------------+------------+
+| department  | min_salary |
++-------------+------------+
+| marketing   |      37000 |
+| finance     |      27500 |
+| development |      26000 |
++-------------+------------+
+3 rows in set (0.04 sec)
