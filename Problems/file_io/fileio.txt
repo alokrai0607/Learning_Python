@@ -1,0 +1,13 @@
+Type of all files :
+Text files (test file , docs file , logs file)
+Binary files (Video files , mp4 , png , jpeg ...)
+
+Python can be used to perform opration on file 
+
+all files will be store in binary forms (bit).
+
+basic opration :
+open files .    
+read files. (default)
+write files .
+close files . 
