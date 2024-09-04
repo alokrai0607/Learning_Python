@@ -7,4 +7,4 @@ def swap(a,b):
     print("a will be : ",a)
     print("b will be : ",b)
 
-#print(swap(4,5))
+swap(4,5)
