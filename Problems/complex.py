@@ -8,3 +8,6 @@ class Complex :
 
 num1 = Complex(1,3)
 num1.showNumber()
+
+num1 = Complex(5,7)
+num1.showNumber()
