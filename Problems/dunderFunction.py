@@ -14,16 +14,25 @@ class Complex :
     def showNumber(self):
         print(self.real,"i+",self.img,"j")
 
-    def add(self, num2):
+    def __add__(self, num2): #dunderFunction
         newReal = self.real + num2.real
         newImg = self.img + num2.img
         return Complex(newReal,newImg)
     
+    def __sub__(self, num2): #dunderFunction
+        newReal = self.real - num2.real
+        newImg = self.img - num2.img
+        return Complex(newReal,newImg)
+
 num1 = Complex(1,3)
 num1.showNumber()
 
 num2 = Complex(5,7)
 num2.showNumber()
 
-num3 = num1.add(num2)
+num3 = num1.__add__(num2)
 num3.showNumber()
+
+num3 = num2-num1
+num3.showNumber()
+
