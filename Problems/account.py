@@ -19,4 +19,10 @@ class Account :
 
 acc1 = Account(100000 , 1254425100)
 print((acc1.AccBal))
-print((acc1.AccNo))
+acc1.creditBal(90000)
+acc1.debitBal(30000)
+acc1.debitBal(20000)
+acc1.debitBal(1000)
+acc1.creditBal(300000)
+
+
