@@ -19,3 +19,4 @@ class TyotaCar(Car):
 Car1 = TyotaCar("Fortuner","Electric")
 print(Car1.name)
 print(Car1.start)
+
