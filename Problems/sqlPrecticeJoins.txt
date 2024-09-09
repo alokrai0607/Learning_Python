@@ -1,0 +1,773 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 35
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases ;
++---------------------------+
+| Database                  |
++---------------------------+
+| apnacollege               |
+| cloud_vendor              |
+| companydb                 |
+| data                      |
+| db                        |
+| db1                       |
+| db2                       |
+| employeedb                |
+| fastapi_crud              |
+| fastapi_todo_db           |
+| formdb                    |
+| information_schema        |
+| jdbcdb                    |
+| kfcdb                     |
+| learn_sql                 |
+| learnmysql                |
+| library                   |
+| librarydb                 |
+| mappingdb1                |
+| masaidb                   |
+| mydatabase                |
+| mydb                      |
+| mynewdb                   |
+| mysql                     |
+| newdb                     |
+| nurady                    |
+| org                       |
+| oyodb                     |
+| performance_schema        |
+| prectice                  |
+| sb201_db_day6             |
+| sb201c2db                 |
+| sb201db                   |
+| sb_101_block_23           |
+| sb_101_block_24           |
+| shop                      |
+| shopkaro                  |
+| sqljoins                  |
+| student_management_system |
+| swiggydb                  |
+| swipe                     |
+| sys                       |
+| test                      |
+| testmydb                  |
+| todo                      |
+| wifidb                    |
++---------------------------+
+46 rows in set (0.01 sec)
+
+mysql> use todo ;
+Database changed
+mysql> show tables ;
++----------------+
+| Tables_in_todo |
++----------------+
+| todo_items     |
++----------------+
+1 row in set (0.02 sec)
+
+mysql> select * from tables ;
+ERROR 1146 (42S02): Table 'todo.tables' doesn't exist
+mysql> select * from todo_items ;
++----+-------+-------------+--------------+
+| id | title | description | is_completed |
++----+-------+-------------+--------------+
+|  1 | Hello | Moto        |            0 |
+|  2 | Hello | World       |            0 |
++----+-------+-------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from todo_items ;
++----+-------+-----------------------+--------------+
+| id | title | description           | is_completed |
++----+-------+-----------------------+--------------+
+|  3 | Yoga  | 1 hr on daily routine |            0 |
+|  4 | Swim  | 1.5 hr done           |            0 |
++----+-------+-----------------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from todo_items ;
++----+-------+-----------------------+--------------+
+| id | title | description           | is_completed |
++----+-------+-----------------------+--------------+
+|  3 | Yoga  | 1 hr on daily routine |            0 |
+|  4 | Swim  | 1.5 hr done           |            0 |
+|  5 | Walk  | 10 Km done            |            0 |
+|  6 | Walk  | 10 Km done            |            0 |
++----+-------+-----------------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from todo_items ;
++----+---------+-----------------------+--------------+
+| id | title   | description           | is_completed |
++----+---------+-----------------------+--------------+
+|  3 | Magic   | 1 hr on daily routine |            0 |
+|  4 | Swim    | 1.5 hr done           |            0 |
+|  6 | Walk    | 10 Km done            |            0 |
+|  7 | Cycling | 25 Km                 |            0 |
+|  8 | Gym     | 2 Hr (Fitness Zone)   |            0 |
++----+---------+-----------------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql>  show databases ;
++---------------------------+
+| Database                  |
++---------------------------+
+| apnacollege               |
+| cloud_vendor              |
+| companydb                 |
+| data                      |
+| db                        |
+| db1                       |
+| db2                       |
+| employeedb                |
+| fastapi_crud              |
+| fastapi_todo_db           |
+| formdb                    |
+| information_schema        |
+| jdbcdb                    |
+| kfcdb                     |
+| learn_sql                 |
+| learnmysql                |
+| library                   |
+| librarydb                 |
+| mappingdb1                |
+| masaidb                   |
+| mydatabase                |
+| mydb                      |
+| mynewdb                   |
+| mysql                     |
+| newdb                     |
+| nurady                    |
+| org                       |
+| oyodb                     |
+| performance_schema        |
+| prectice                  |
+| sb201_db_day6             |
+| sb201c2db                 |
+| sb201db                   |
+| sb_101_block_23           |
+| sb_101_block_24           |
+| shop                      |
+| shopkaro                  |
+| sqljoins                  |
+| student_management_system |
+| swiggydb                  |
+| swipe                     |
+| sys                       |
+| test                      |
+| testmydb                  |
+| todo                      |
+| wifidb                    |
++---------------------------+
+46 rows in set (0.04 sec)
+
+mysql> use nurady ;
+Database changed
+mysql> show tables ;
++------------------+
+| Tables_in_nurady |
++------------------+
+| employee         |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from employee ;
++------+---------+--------+--------+-------------+------------+
+| e_id | name    | gender | salary | department  | d_o_j      |
++------+---------+--------+--------+-------------+------------+
+|    1 | Surbhi  | female |  15000 | finance     | 2008-05-31 |
+|    2 | Ajay    | male   |  27500 | finance     | 2010-04-25 |
+|    3 | Dheeraj | male   |  45000 | development | 2014-06-21 |
+|    4 | Shefali | female |  22000 | testing     | 2005-01-01 |
+|    5 | Sonali  | female |  37000 | marketing   | 2007-08-26 |
+|    6 | Jayesh  | male   |  26000 | development | 2009-01-25 |
++------+---------+--------+--------+-------------+------------+
+6 rows in set (0.03 sec)
+
+mysql> show tables ;
++------------------+
+| Tables_in_nurady |
++------------------+
+| employee         |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> show databases ;
++---------------------------+
+| Database                  |
++---------------------------+
+| apnacollege               |
+| cloud_vendor              |
+| companydb                 |
+| data                      |
+| db                        |
+| db1                       |
+| db2                       |
+| employeedb                |
+| fastapi_crud              |
+| fastapi_todo_db           |
+| formdb                    |
+| information_schema        |
+| jdbcdb                    |
+| kfcdb                     |
+| learn_sql                 |
+| learnmysql                |
+| library                   |
+| librarydb                 |
+| mappingdb1                |
+| masaidb                   |
+| mydatabase                |
+| mydb                      |
+| mynewdb                   |
+| mysql                     |
+| newdb                     |
+| nurady                    |
+| org                       |
+| oyodb                     |
+| performance_schema        |
+| prectice                  |
+| sb201_db_day6             |
+| sb201c2db                 |
+| sb201db                   |
+| sb_101_block_23           |
+| sb_101_block_24           |
+| shop                      |
+| shopkaro                  |
+| sqljoins                  |
+| student_management_system |
+| swiggydb                  |
+| swipe                     |
+| sys                       |
+| test                      |
+| testmydb                  |
+| todo                      |
+| wifidb                    |
++---------------------------+
+46 rows in set (0.01 sec)
+
+mysql> create database joins ;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use joins ;
+Database changed
+mysql> CREATE TABLE departments (
+    ->     department_id INT PRIMARY KEY,
+    ->     department_name VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> CREATE TABLE employees (
+    ->     emp_id INT PRIMARY KEY,
+    ->     emp_name VARCHAR(50),
+    ->     department_id INT,
+    ->     FOREIGN KEY (department_id) REFERENCES departments(department_id)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO departments (department_id, department_name)
+    -> VALUES
+    -> (101, 'HR'),
+    -> (102, 'IT'),
+    -> (103, 'Sales');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO employees (emp_id, emp_name, department_id)
+    -> VALUES
+    -> (1, 'Amit', 101),
+    -> (2, 'Priya', 102),
+    -> (3, 'Rajesh', 101),
+    -> (4, 'Sunita', 103);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE customers (
+    ->     customer_id INT PRIMARY KEY,
+    ->     customer_name VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE TABLE orders (
+    ->     order_id INT PRIMARY KEY,
+    ->     customer_id INT,
+    ->     order_date DATE,
+    ->     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO customers (customer_id, customer_name)
+    -> VALUES
+    -> (1, 'Anjali'),
+    -> (2, 'Rohit'),
+    -> (3, 'Kiran');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO orders (order_id, customer_id, order_date)
+    -> VALUES
+    -> (101, 1, '2023-09-01'),
+    -> (102, 1, '2023-09-02'),
+    -> (103, 2, '2023-09-03');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE courses (
+    ->     course_id INT PRIMARY KEY,
+    ->     course_name VARCHAR(50),
+    ->     student_id INT
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE students (
+    ->     student_id INT PRIMARY KEY,
+    ->     student_name VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO students (student_id, student_name)
+    -> VALUES
+    -> (1, 'Neha'),
+    -> (2, 'Deepak'),
+    -> (3, 'Vikram');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO courses (course_id, course_name, student_id)
+    -> VALUES
+    -> (201, 'Mathematics', 1),
+    -> (202, 'Science', NULL),
+    -> (203, 'Literature', 3);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE authors (
+    ->     author_id INT PRIMARY KEY,
+    ->     author_name VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE books (
+    ->     book_id INT PRIMARY KEY,
+    ->     book_title VARCHAR(100),
+    ->     author_id INT,
+    ->     FOREIGN KEY (author_id) REFERENCES authors(author_id)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO authors (author_id, author_name)
+    -> VALUES
+    -> (1, 'Chetan Bhagat'),
+    -> (2, 'Amish Tripathi'),
+    -> (3, 'Ruskin Bond');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO books (book_id, book_title, author_id)
+    -> VALUES
+    -> (101, 'Five Point Someone', 1),
+    -> (102, 'The Immortals of Meluha', 2),
+    -> (103, 'The Room on the Roof', 3),
+    -> (104, 'Sita: Warrior of Mithila', 2),
+    -> (105, 'Train to Pakistan', NULL);
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE products (
+    ->     product_id INT PRIMARY KEY,
+    ->     product_name VARCHAR(50),
+    ->     price DECIMAL(10, 2)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE TABLE orders (
+    ->     order_id INT PRIMARY KEY,
+    ->     order_date DATE,
+    ->     customer_id INT,
+    ->     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    -> );
+ERROR 1050 (42S01): Table 'orders' already exists
+mysql> CREATE TABLE order_items (
+    ->     order_id INT,
+    ->     product_id INT,
+    ->     quantity INT,
+    ->     FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    ->     FOREIGN KEY (product_id) REFERENCES products(product_id)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO products (product_id, product_name, price)
+    -> VALUES
+    -> (1, 'Laptop', 80000.00),
+    -> (2, 'Mouse', 500.00),
+    -> (3, 'Keyboard', 1500.00);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO order_items (order_id, product_id, quantity)
+    -> VALUES
+    -> (1, 1, 1),
+    -> (1, 2, 2),
+    -> (2, 3, 1);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`joins`.`order_items`, CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`))
+mysql> show tables ;
++-----------------+
+| Tables_in_joins |
++-----------------+
+| authors         |
+| books           |
+| courses         |
+| customers       |
+| departments     |
+| employees       |
+| order_items     |
+| orders          |
+| products        |
+| students        |
++-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employees ;
++--------+----------+---------------+
+| emp_id | emp_name | department_id |
++--------+----------+---------------+
+|      1 | Amit     |           101 |
+|      2 | Priya    |           102 |
+|      3 | Rajesh   |           101 |
+|      4 | Sunita   |           103 |
++--------+----------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from departments ;
++---------------+-----------------+
+| department_id | department_name |
++---------------+-----------------+
+|           101 | HR              |
+|           102 | IT              |
+|           103 | Sales           |
++---------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> select emp_name ,department_name
+    -> FROM employees as e
+    -> INNER JOIN department_name as d
+    -> ON e.department_id = d.department_id;
+ERROR 1146 (42S02): Table 'joins.department_name' doesn't exist
+mysql> select emp_name ,department_name
+    ->     FROM employees as e
+    ->     INNER JOIN departments as d
+    ->      ON e.department_id = d.department_id;
++----------+-----------------+
+| emp_name | department_name |
++----------+-----------------+
+| Amit     | HR              |
+| Rajesh   | HR              |
+| Priya    | IT              |
+| Sunita   | Sales           |
++----------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employees ;
++--------+----------+---------------+
+| emp_id | emp_name | department_id |
++--------+----------+---------------+
+|      1 | Amit     |           101 |
+|      2 | Priya    |           102 |
+|      3 | Rajesh   |           101 |
+|      4 | Sunita   |           103 |
++--------+----------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from departments ;
++---------------+-----------------+
+| department_id | department_name |
++---------------+-----------------+
+|           101 | HR              |
+|           102 | IT              |
+|           103 | Sales           |
++---------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customers ;
++-------------+---------------+
+| customer_id | customer_name |
++-------------+---------------+
+|           1 | Anjali        |
+|           2 | Rohit         |
+|           3 | Kiran         |
++-------------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from orders ;
++----------+-------------+------------+
+| order_id | customer_id | order_date |
++----------+-------------+------------+
+|      101 |           1 | 2023-09-01 |
+|      102 |           1 | 2023-09-02 |
+|      103 |           2 | 2023-09-03 |
++----------+-------------+------------+
+3 rows in set (0.01 sec)
+
+mysql> select *
+    -> FROM customers as c
+    -> LEFT JOIN orders as o
+    -> ON c.customer_id = o.customer_id ;
++-------------+---------------+----------+-------------+------------+
+| customer_id | customer_name | order_id | customer_id | order_date |
++-------------+---------------+----------+-------------+------------+
+|           1 | Anjali        |      102 |           1 | 2023-09-02 |
+|           1 | Anjali        |      101 |           1 | 2023-09-01 |
+|           2 | Rohit         |      103 |           2 | 2023-09-03 |
+|           3 | Kiran         |     NULL |        NULL | NULL       |
++-------------+---------------+----------+-------------+------------+
+4 rows in set (0.01 sec)
+
+mysql> select c.customer_name, o.order_id, o.order_date
+    ->      FROM customers as c
+    ->      LEFT JOIN orders as o
+    ->      ON c.customer_id = o.customer_id ;
++---------------+----------+------------+
+| customer_name | order_id | order_date |
++---------------+----------+------------+
+| Anjali        |      102 | 2023-09-02 |
+| Anjali        |      101 | 2023-09-01 |
+| Rohit         |      103 | 2023-09-03 |
+| Kiran         |     NULL | NULL       |
++---------------+----------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student;
+ERROR 1146 (42S02): Table 'joins.student' doesn't exist
+mysql> select * from students;
++------------+--------------+
+| student_id | student_name |
++------------+--------------+
+|          1 | Neha         |
+|          2 | Deepak       |
+|          3 | Vikram       |
++------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from courses;
++-----------+-------------+------------+
+| course_id | course_name | student_id |
++-----------+-------------+------------+
+|       201 | Mathematics |          1 |
+|       202 | Science     |       NULL |
+|       203 | Literature  |          3 |
++-----------+-------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select course_name , student_name
+    -> FROM students as s
+    -> RIGHT JOIN courses as c
+    -> ON s.student_id = c.student_id ;
++-------------+--------------+
+| course_name | student_name |
++-------------+--------------+
+| Mathematics | Neha         |
+| Science     | NULL         |
+| Literature  | Vikram       |
++-------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT c.course_name, s.student_name
+    -> FROM students s
+    -> RIGHT JOIN courses c
+    -> ON s.student_id = c.student_id;
++-------------+--------------+
+| course_name | student_name |
++-------------+--------------+
+| Mathematics | Neha         |
+| Science     | NULL         |
+| Literature  | Vikram       |
++-------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from authors ;
++-----------+----------------+
+| author_id | author_name    |
++-----------+----------------+
+|         1 | Chetan Bhagat  |
+|         2 | Amish Tripathi |
+|         3 | Ruskin Bond    |
++-----------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from books ;
++---------+--------------------------+-----------+
+| book_id | book_title               | author_id |
++---------+--------------------------+-----------+
+|     101 | Five Point Someone       |         1 |
+|     102 | The Immortals of Meluha  |         2 |
+|     103 | The Room on the Roof     |         3 |
+|     104 | Sita: Warrior of Mithila |         2 |
+|     105 | Train to Pakistan        |      NULL |
++---------+--------------------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select *
+    -> FROM author as a
+    -> FULL OUTER JOIN books as b
+    -> ON a.author_id = b.author_id ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FULL OUTER JOIN books as b
+ON a.author_id = b.author_id' at line 3
+mysql> select *
+    ->      FROM author as a
+    ->      FULL JOIN books as b
+    ->      ON a.author_id = b.author_id ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FULL JOIN books as b
+     ON a.author_id = b.author_id' at line 3
+mysql> select * from author ;
+ERROR 1146 (42S02): Table 'joins.author' doesn't exist
+mysql> select *
+    ->
+    -> ;
+ERROR 1096 (HY000): No tables used
+mysql> selct * from authors ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct * from authors' at line 1
+mysql> select * from author ;
+ERROR 1146 (42S02): Table 'joins.author' doesn't exist
+mysql> select * from authors ;
++-----------+----------------+
+| author_id | author_name    |
++-----------+----------------+
+|         1 | Chetan Bhagat  |
+|         2 | Amish Tripathi |
+|         3 | Ruskin Bond    |
++-----------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from books ;
++---------+--------------------------+-----------+
+| book_id | book_title               | author_id |
++---------+--------------------------+-----------+
+|     101 | Five Point Someone       |         1 |
+|     102 | The Immortals of Meluha  |         2 |
+|     103 | The Room on the Roof     |         3 |
+|     104 | Sita: Warrior of Mithila |         2 |
+|     105 | Train to Pakistan        |      NULL |
++---------+--------------------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> slect *
+    -> FROM authors as a
+    -> LEFT JOIN books as b
+    -> ON a.author_id = b.author_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slect *
+FROM authors as a
+LEFT JOIN books as b
+ON a.author_id = b.author_id' at line 1
+mysql>
+mysql> select *
+    ->     FROM authors as a
+    ->     LEFT JOIN books as b
+    ->     ON a.author_id = b.author_id;
++-----------+----------------+---------+--------------------------+-----------+
+| author_id | author_name    | book_id | book_title               | author_id |
++-----------+----------------+---------+--------------------------+-----------+
+|         1 | Chetan Bhagat  |     101 | Five Point Someone       |         1 |
+|         2 | Amish Tripathi |     102 | The Immortals of Meluha  |         2 |
+|         2 | Amish Tripathi |     104 | Sita: Warrior of Mithila |         2 |
+|         3 | Ruskin Bond    |     103 | The Room on the Roof     |         3 |
++-----------+----------------+---------+--------------------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> UNION
+    ->
+    -> select *
+    ->     FROM authors as a
+    ->     RIGHT JOIN books as b
+    ->     ON a.author_id = b.author_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UNION
+
+select *
+    FROM authors as a
+    RIGHT JOIN books as b
+    ON a.author_' at line 1
+mysql> SELECT a.author_name, b.book_title
+    -> FROM authors a
+    -> LEFT JOIN books b
+    -> ON a.author_id = b.author_id
+    ->
+    -> UNION
+    ->
+    -> SELECT a.author_name, b.book_title
+    -> FROM authors a
+    -> RIGHT JOIN books b
+    -> ON a.author_id = b.author_id;
++----------------+--------------------------+
+| author_name    | book_title               |
++----------------+--------------------------+
+| Chetan Bhagat  | Five Point Someone       |
+| Amish Tripathi | The Immortals of Meluha  |
+| Amish Tripathi | Sita: Warrior of Mithila |
+| Ruskin Bond    | The Room on the Roof     |
+| NULL           | Train to Pakistan        |
++----------------+--------------------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from employee;
+ERROR 1146 (42S02): Table 'joins.employee' doesn't exist
+mysql> select * from employees;
++--------+----------+---------------+
+| emp_id | emp_name | department_id |
++--------+----------+---------------+
+|      1 | Amit     |           101 |
+|      2 | Priya    |           102 |
+|      3 | Rajesh   |           101 |
+|      4 | Sunita   |           103 |
++--------+----------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employees ;
++--------+----------+---------------+
+| emp_id | emp_name | department_id |
++--------+----------+---------------+
+|      1 | Amit     |           101 |
+|      2 | Priya    |           102 |
+|      3 | Rajesh   |           101 |
+|      4 | Sunita   |           103 |
++--------+----------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> select e.emp_name as Employee , m.emp_name as Manager
+    -> FROM employees as e
+    -> SELF JOIN employees as m
+    -> ON e.manager_id = m.employee_id ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELF JOIN employees as m
+ON e.manager_id = m.employee_id' at line 3
+mysql> SELECT e.emp_name AS Employee, m.emp_name AS Manager
+    -> FROM employees e
+    -> LEFT JOIN employees m
+    -> ON e.manager_id = m.emp_id;
+ERROR 1054 (42S22): Unknown column 'e.manager_id' in 'on clause'
+mysql>
+mysql> select * from orders ;
++----------+-------------+------------+
+| order_id | customer_id | order_date |
++----------+-------------+------------+
+|      101 |           1 | 2023-09-01 |
+|      102 |           1 | 2023-09-02 |
+|      103 |           2 | 2023-09-03 |
++----------+-------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from products ;
++------------+--------------+----------+
+| product_id | product_name | price    |
++------------+--------------+----------+
+|          1 | Laptop       | 80000.00 |
+|          2 | Mouse        |   500.00 |
+|          3 | Keyboard     |  1500.00 |
++------------+--------------+----------+
+3 rows in set (0.01 sec)
