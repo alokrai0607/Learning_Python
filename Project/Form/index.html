@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form id="formid">
+      <h1>CRUD Operation using Local Storage</h1>
+      <h3>User_Id</h3>
+      <input id="IDid" type="number" placeholder="Type your ID here" />
+      <h3>User_Name</h3>
+      <input id="nameid" type="text" placeholder="Type your Name Here" />
+      <h3>User_Age</h3>
+      <input id="ageid" type="number" placeholder="Type your age here" />
+      <h3>User_Gender</h3>
+      <select id="genid">
+        <option value="">Select Gender</option>
+        <option value="MALE">MALE</option>
+        <option value="FEMALE">FEMALE</option>
+        <option value="TRANS">TRANS</option>
+      </select>
+      <br />
+      <br />
+      <button type="button" id="submit">Save</button>
+      <button type="button" id="update">Update</button>
+      <button type="button" id="delete">Delete</button>
+    </form>
+  </body>
+  <script>
+    const form = document.getElementById("formid");
+
+    function validateForm() {
+      const id = document.getElementById("IDid").value;
+      const name = document.getElementById("nameid").value;
+      const age = document.getElementById("ageid").value;
+      const gender = document.getElementById("genid").value;
+
+      if (!id || !name || !age || !gender) {
+        alert("Please fill all fields.");
+        return false;
+      }
+
+      if (age > 110) {
+        alert("Agewill not be more than 110.");
+        return false;
+      }
+
+      return true;
+    }
+
+    document.getElementById("submit").addEventListener("click", function () {
+      if (!validateForm()) {
+        return;
+      }
+
+      let storedData = JSON.parse(localStorage.getItem("newArray")) || [];
+
+      const id = document.getElementById("IDid").value;
+      const name = document.getElementById("nameid").value;
+      const age = document.getElementById("ageid").value;
+      const gender = document.getElementById("genid").value;
+
+      const formData = {
+        id: id,
+        name: name,
+        age: age,
+        gender: gender,
+      };
+
+      const existingItem = storedData.find((item) => item.id == id);
+      if (existingItem) {
+        alert("ID already exists.");
+        return;
+      }
+
+      storedData.push(formData);
+
+      localStorage.setItem("newArray", JSON.stringify(storedData));
+      alert("Data saved successfully");
+
+      form.reset();
+    });
+
+    // Update data function
+    document.getElementById("update").addEventListener("click", function () {
+      const id = document.getElementById("IDid").value;
+
+      if (!id) {
+        alert("ID is required to update the data.");
+        return;
+      }
+
+      const name = document.getElementById("nameid").value;
+      const age = document.getElementById("ageid").value;
+      const gender = document.getElementById("genid").value;
+
+      if (age > 110) {
+        alert("Age can't be more than 110 years.");
+        return;
+      }
+
+      const updatedData = {
+        id: id,
+        name: name,
+        age: age,
+        gender: gender,
+      };
+
+      let storedData = JSON.parse(localStorage.getItem("newArray")) || [];
+
+      const searchforUpdate = storedData.findIndex((item) => item.id == id);
+
+      if (searchforUpdate !== -1) {
+        storedData[searchforUpdate] = updatedData;
+        localStorage.setItem("newArray", JSON.stringify(storedData));
+
+        alert("Data updated");
+
+        form.reset();
+      } else {
+        alert("No matching ID found for update.");
+      }
+    });
+
+    // Delete data function
+    document.getElementById("delete").addEventListener("click", function () {});
+  </script>
+</html>

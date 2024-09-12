@@ -1,0 +1,21 @@
+/* Reset some basic styles for better cross-browser compatibility */
+* {
+  margin: 10;
+  padding: 10;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Center the form container */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f5ecec;
+}
