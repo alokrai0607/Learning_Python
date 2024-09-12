@@ -125,7 +125,27 @@
       }
     });
 
-    // Delete data function (Working on it)
-    document.getElementById("delete").addEventListener("click", function () {});
+    // Delete data function
+    document.getElementById("delete").addEventListener("click", function () {
+      const id = document.getElementById("IDid").value;
+      if (!id) {
+        alert("ID is required to delete the data.");
+        return;
+      }
+
+      let storedData = JSON.parse(localStorage.getItem("newArray")) || [];
+
+      const searchforDelete = storedData.findIndex((item) => item.id == id);
+
+      if (searchforDelete !== -1) {
+        storedData.splice(searchforDelete, 1); // Remove the item from the array
+        localStorage.setItem("newArray", JSON.stringify(storedData));
+        alert("Data deleted successfully");
+
+        form.reset();
+      } else {
+        alert("No matching ID found for deletion.");
+      }
+    });
   </script>
 </html>
