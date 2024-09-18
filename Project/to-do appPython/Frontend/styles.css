@@ -16,7 +16,7 @@ body {
 
 /* Container */
 .container {
-  background-color: #fff;
+  background-color: #ea7f7f;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -27,7 +27,7 @@ body {
 /* App Title */
 .app-title {
   text-align: center;
-  color: #333;
+  color: #333333;
   font-size: 2rem;
   margin-bottom: 20px;
 }

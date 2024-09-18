@@ -1,8 +1,16 @@
 from sqlalchemy.orm import Session
 from app.models.todo import TodoItem
 
+#designed to manage CRUD operations
 class TodoRepository:
+    # initializes the repository with a database session (db)
     def __init__(self, db: Session):
+
+        #self.db, which is an instance of SQLAlchemy's Session to interact with the 
+        #database.
+        
+        # This session is responsible for managing transactions, running queries, 
+        # and keeping track of changes.
         self.db = db
 
     def get_todos(self):

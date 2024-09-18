@@ -2,6 +2,8 @@ from sqlalchemy.orm import Session
 from app.repositories.todo_repository import TodoRepository
 from app.models.todo import TodoItem
 
+# Initializes the TodoService class with a database session (db) 
+# and creates an instance of the TodoRepository class.
 class TodoService:
     def __init__(self, db: Session):
         self.repository = TodoRepository(db)
