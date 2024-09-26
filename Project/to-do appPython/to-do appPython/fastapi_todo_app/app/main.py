@@ -18,7 +18,7 @@ from fastapi.responses import FileResponse
 #that handles incoming HTTP requests and routing them to appropriate endpoints.
 app = FastAPI()
 
-# A small icon displayed in the browser tab
+# A small icon displayed in the top of the browser tab
 @app.get("/favicon.ico")
 async def favicon():
     return FileResponse("path_to_favicon/favicon.ico")
@@ -37,6 +37,7 @@ app.include_router(todo_controller.router)
 #Adds the CORS middleware to handle cross-origin requests, 
 #allowing the backend to accept requests from different origins.
 app.add_middleware(
+    #Cross-Origin Resource Sharing
     CORSMiddleware,
     allow_credentials=True, #allows cookies and authentication to be sent across domains.
     allow_origins=["*"],  # Allow all origins for development; adjust for production

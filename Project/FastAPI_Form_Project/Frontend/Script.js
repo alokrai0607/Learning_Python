@@ -16,6 +16,17 @@ userForm.addEventListener("submit", async (e) => {
   const userAge = document.getElementById("user_age").value;
   const userGender = document.getElementById("user_gender").value;
 
+  const nameRegex = /^[A-Za-z\s]+$/;
+  if (!nameRegex.test(userName)) {
+    alert("Name should only contain alphabetic characters.");
+    return;
+  }
+
+  if (userAge > 100) {
+    alert("Age cannot be more than 100 years.");
+    return;
+  }
+
   if (editIndex === -1) {
     await createUser({
       user_name: userName,

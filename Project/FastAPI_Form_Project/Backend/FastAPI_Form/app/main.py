@@ -18,3 +18,7 @@ def startup_event():
     init_db()
 
 app.include_router(user_router)
+
+# .\venv\Scripts\Activate
+
+#  .\venv\Scripts\uvicorn app.main:app --reload
